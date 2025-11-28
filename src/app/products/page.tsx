@@ -1,11 +1,11 @@
 "use client";
 
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo } from "react";
+import { Metadata } from "next";
 import { Filter } from "lucide-react";
-import { useRouter } from "next/navigation";
-import { getCategoryBySlug } from "@/data/categories";
+import { getAllProducts } from "@/data/products";
+import { getAllCategories } from "@/data/categories";
 import {
-  getProductsByCategorySlug,
   filterProducts,
   sortProducts,
   getPriceRange,
@@ -23,50 +23,29 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { getAllCategories } from "@/data/categories";
 
-export default function CategoryPage({ params }: { params: Promise<{ slug: string }> }) {
-  const router = useRouter();
-  const [slug, setSlug] = useState<string | null>(null);
+export default function ProductsPage() {
+  const allProducts = getAllProducts();
+  const allCategories = getAllCategories();
+  const priceRange = getPriceRange(allProducts);
+
   const [filters, setFilters] = useState<ProductFilters>({});
   const [sortBy, setSortBy] = useState<SortOption>("newest");
   const [isMobileFiltersOpen, setIsMobileFiltersOpen] = useState(false);
 
-  // Resolve params
-  useEffect(() => {
-    params.then((p) => setSlug(p.slug));
-  }, [params]);
-
-  if (!slug) {
-    return <div className="container mx-auto px-4 py-8">در حال بارگذاری...</div>;
-  }
-
-  const category = getCategoryBySlug(slug);
-  if (!category) {
-    router.push("/products");
-    return null;
-  }
-
-  const categoryProducts = getProductsByCategorySlug(slug);
-  const allCategories = getAllCategories();
-  const priceRange = getPriceRange(categoryProducts);
-
   // Apply filters and sorting
   const filteredAndSortedProducts = useMemo(() => {
-    let result = filterProducts(categoryProducts, filters);
+    let result = filterProducts(allProducts, filters);
     result = sortProducts(result, sortBy);
     return result;
-  }, [categoryProducts, filters, sortBy]);
+  }, [allProducts, filters, sortBy]);
 
   return (
     <div className="container mx-auto px-4 py-8">
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-2">{category.name}</h1>
-        {category.description && (
-          <p className="text-muted-foreground mb-4">{category.description}</p>
-        )}
-        <p className="text-sm text-muted-foreground">
+        <h1 className="text-3xl font-bold mb-2">همه محصولات</h1>
+        <p className="text-muted-foreground">
           {filteredAndSortedProducts.length} محصول یافت شد
         </p>
       </div>
