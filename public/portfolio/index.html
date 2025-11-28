@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ario Store - Portfolio Showcase</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        mustard: '#D4A017',
+                        warmbrown: '#8C6A44',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100;300;400;500;700;900&display=swap');
+        body { font-family: 'Vazirmatn', sans-serif; background-color: #f8f9fa; }
+        .mockup-frame {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: white;
+        }
+        .mockup-frame:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 30px 60px -12px rgba(212, 160, 23, 0.25), 0 0 0 1px rgba(212, 160, 23, 0.1);
+        }
+        .browser-bar {
+            background: #f1f3f5;
+            padding: 12px;
+            display: flex;
+            gap: 6px;
+            border-bottom: 1px solid #e9ecef;
+        }
+        .dot { width: 10px; height: 10px; border-radius: 50%; }
+        .dot-red { background: #ff5f56; }
+        .dot-yellow { background: #ffbd2e; }
+        .dot-green { background: #27c93f; }
+    </style>
+</head>
+<body class="py-12 px-4">
+
+    <div class="max-w-6xl mx-auto space-y-12">
+        <div class="text-center space-y-4">
+            <h1 class="text-4xl font-bold text-gray-900">Ario Store Redesign</h1>
+            <p class="text-xl text-gray-500">Modern E-commerce UI Kit • Next.js • Tailwind CSS</p>
+            <div class="flex justify-center gap-4 pt-4">
+                <span class="px-3 py-1 bg-mustard text-white rounded-full text-sm">Mustard Accent</span>
+                <span class="px-3 py-1 bg-warmbrown text-white rounded-full text-sm">Warm Brown</span>
+                <span class="px-3 py-1 bg-black text-white rounded-full text-sm">Minimalist</span>
+            </div>
+        </div>
+
+        <!-- Gallery -->
+        <div class="grid gap-16">
+            
+            <!-- Hero -->
+            <div class="space-y-4">
+                <h2 class="text-2xl font-bold text-gray-800 pr-4 border-r-4 border-mustard">صفحه اصلی (Hero Section)</h2>
+                <div class="mockup-frame">
+                    <div class="browser-bar">
+                        <div class="dot dot-red"></div>
+                        <div class="dot dot-yellow"></div>
+                        <div class="dot dot-green"></div>
+                    </div>
+                    <img src="./01-hero.png" alt="Hero Page" class="w-full h-auto">
+                </div>
+            </div>
+
+            <!-- Product Listing -->
+            <div class="space-y-4">
+                <h2 class="text-2xl font-bold text-gray-800 pr-4 border-r-4 border-mustard">لیست محصولات</h2>
+                <div class="mockup-frame">
+                    <div class="browser-bar">
+                        <div class="dot dot-red"></div>
+                        <div class="dot dot-yellow"></div>
+                        <div class="dot dot-green"></div>
+                    </div>
+                    <img src="./02-product-listing.png" alt="Product Listing" class="w-full h-auto">
+                </div>
+            </div>
+
+            <!-- Product Detail -->
+            <div class="space-y-4">
+                <h2 class="text-2xl font-bold text-gray-800 pr-4 border-r-4 border-mustard">جزئیات محصول</h2>
+                <div class="mockup-frame">
+                    <div class="browser-bar">
+                        <div class="dot dot-red"></div>
+                        <div class="dot dot-yellow"></div>
+                        <div class="dot dot-green"></div>
+                    </div>
+                    <img src="./03-product-detail.png" alt="Product Detail" class="w-full h-auto">
+                </div>
+            </div>
+
+             <!-- Cart -->
+             <div class="grid md:grid-cols-2 gap-8">
+                <div class="space-y-4">
+                    <h2 class="text-2xl font-bold text-gray-800 pr-4 border-r-4 border-mustard">سبد خرید</h2>
+                    <div class="mockup-frame">
+                        <div class="browser-bar">
+                            <div class="dot dot-red"></div>
+                            <div class="dot dot-yellow"></div>
+                            <div class="dot dot-green"></div>
+                        </div>
+                        <img src="./04-cart.png" alt="Cart" class="w-full h-auto">
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <h2 class="text-2xl font-bold text-gray-800 pr-4 border-r-4 border-mustard">تسویه حساب</h2>
+                    <div class="mockup-frame">
+                        <div class="browser-bar">
+                            <div class="dot dot-red"></div>
+                            <div class="dot dot-yellow"></div>
+                            <div class="dot dot-green"></div>
+                        </div>
+                        <img src="./05-checkout.png" alt="Checkout" class="w-full h-auto">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="text-center text-gray-400 py-12">
+            Designed & Developed by Ario Studio
+        </div>
+    </div>
+
+</body>
+</html>
