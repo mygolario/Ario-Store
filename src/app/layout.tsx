@@ -8,6 +8,8 @@ import { ToastProvider } from "@/components/providers/ToastProvider";
 const vazirmatn = Vazirmatn({
   subsets: ["arabic"],
   variable: "--font-vazirmatn",
+  display: "swap",
+  preload: true,
 });
 
 export const metadata: Metadata = {
@@ -40,6 +42,9 @@ export const metadata: Metadata = {
     title: "Ario Store | فروشگاه اینترنتی گجت و اکسسوری دیجیتال",
     description:
       "فروشگاه اینترنتی آریو - عرضه کننده بهترین گجت‌ها و اکسسوری‌های دیجیتال",
+  },
+  other: {
+    "x-dns-prefetch-control": "on",
   },
 };
 

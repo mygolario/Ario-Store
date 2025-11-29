@@ -11,9 +11,10 @@ import { useToast } from "@/components/ui/toast";
 
 interface ProductCardProps {
   product: Product;
+  priority?: boolean;
 }
 
-export function ProductCard({ product }: ProductCardProps) {
+export function ProductCard({ product, priority = false }: ProductCardProps) {
   const addItem = useCartStore((state) => state.addItem);
   const { addToast } = useToast();
   const isInStock =
@@ -40,6 +41,8 @@ export function ProductCard({ product }: ProductCardProps) {
           fill
           className="object-cover transition-all duration-300 group-hover:scale-[1.03] group-hover:shadow-sm"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          priority={priority}
+          loading={priority ? undefined : "lazy"}
         />
         {/* Badges */}
         <div className="absolute top-2 right-2 flex flex-col gap-2">

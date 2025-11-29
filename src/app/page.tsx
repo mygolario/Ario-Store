@@ -6,7 +6,10 @@ import { getAllCategories } from "@/data/categories";
 import { ProductGrid } from "@/components/product/ProductGrid";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Truck, Shield, HeadphonesIcon, Speaker, Watch, Smartphone } from "lucide-react";
-import { FadeIn } from "@/components/ui/FadeIn";
+import { FadeInOptimized } from "@/components/ui/FadeInOptimized";
+
+export const dynamic = "force-static";
+export const revalidate = 3600; // Revalidate every hour
 
 export const metadata: Metadata = {
   title: "Ario Store | فروشگاه اینترنتی گجت و اکسسوری دیجیتال",
@@ -32,7 +35,7 @@ export default function Home() {
       <section className="relative overflow-hidden container mx-auto px-4 py-20 md:py-32 text-center bg-white">
         <div className="absolute top-0 right-0 -z-10 h-[500px] w-[500px] rounded-full bg-warmbrown/5 blur-3xl" />
         <div className="absolute bottom-0 left-0 -z-10 h-[300px] w-[300px] rounded-full bg-mustard/5 blur-3xl" />
-        <FadeIn>
+        <FadeInOptimized>
           <div className="space-y-6 max-w-3xl mx-auto">
             <h1 className="text-4xl md:text-5xl font-bold text-[#0D0D0D]">
               به فروشگاه آریو خوش آمدید
@@ -55,13 +58,13 @@ export default function Home() {
               </Link>
             </div>
           </div>
-        </FadeIn>
+        </FadeInOptimized>
       </section>
 
       {/* Advantages Section */}
       <section className="bg-muted/50 py-20">
         <div className="container mx-auto px-4">
-          <FadeIn delay={0.2}>
+          <FadeInOptimized delay={0.2}>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <Card>
                 <CardHeader>
@@ -105,21 +108,21 @@ export default function Home() {
                 </CardContent>
               </Card>
             </div>
-          </FadeIn>
+          </FadeInOptimized>
         </div>
       </section>
 
       {/* Featured Products */}
       {featuredProducts.length > 0 && (
         <section className="container mx-auto px-4 py-20">
-          <FadeIn delay={0.3}>
+          <FadeInOptimized delay={0.3}>
             <div className="mb-8 text-center">
               <h2 className="text-3xl font-bold mb-2 text-warmbrown">محصولات ویژه</h2>
               <p className="text-muted-foreground">
                 بهترین و پرفروش‌ترین محصولات ما
               </p>
             </div>
-            <ProductGrid products={featuredProducts} />
+            <ProductGrid products={featuredProducts} priorityCount={4} />
             <div className="text-center mt-8">
               <Link href="/products">
                 <Button variant="outline" size="lg">
@@ -127,14 +130,14 @@ export default function Home() {
                 </Button>
               </Link>
             </div>
-          </FadeIn>
+          </FadeInOptimized>
         </section>
       )}
 
       {/* Categories Section */}
       <section className="bg-muted/50 py-20">
         <div className="container mx-auto px-4">
-          <FadeIn delay={0.4}>
+          <FadeInOptimized delay={0.4}>
             <div className="mb-8 text-center">
               <h2 className="text-3xl font-bold mb-2">دسته‌بندی‌ها</h2>
               <p className="text-muted-foreground">
@@ -176,13 +179,13 @@ export default function Home() {
                 );
               })}
             </div>
-          </FadeIn>
+          </FadeInOptimized>
         </div>
       </section>
 
       {/* Testimonials Section */}
       <section className="container mx-auto px-4 py-20">
-        <FadeIn delay={0.5}>
+        <FadeInOptimized delay={0.5}>
           <div className="mb-8 text-center">
             <h2 className="text-3xl font-bold mb-2">نظرات مشتریان</h2>
             <p className="text-muted-foreground">
@@ -227,7 +230,7 @@ export default function Home() {
               </Card>
             ))}
           </div>
-        </FadeIn>
+        </FadeInOptimized>
       </section>
     </div>
   );
