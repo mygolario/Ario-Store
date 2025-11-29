@@ -43,6 +43,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           priority={priority}
           loading={priority ? undefined : "lazy"}
+          quality={priority ? 90 : 75}
         />
         {/* Badges */}
         <div className="absolute top-2 right-2 flex flex-col gap-2">

@@ -6,7 +6,6 @@ import { getAllCategories } from "@/data/categories";
 import { ProductGrid } from "@/components/product/ProductGrid";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Truck, Shield, HeadphonesIcon, Speaker, Watch, Smartphone } from "lucide-react";
-import { FadeInOptimized } from "@/components/ui/FadeInOptimized";
 
 export const dynamic = "force-static";
 export const revalidate = 3600; // Revalidate every hour
@@ -33,39 +32,34 @@ export default function Home() {
     <div className="flex flex-col">
       {/* Hero Section */}
       <section className="relative overflow-hidden container mx-auto px-4 py-20 md:py-32 text-center bg-white">
-        <div className="absolute top-0 right-0 -z-10 h-[500px] w-[500px] rounded-full bg-warmbrown/5 blur-3xl" />
-        <div className="absolute bottom-0 left-0 -z-10 h-[300px] w-[300px] rounded-full bg-mustard/5 blur-3xl" />
-        <FadeInOptimized>
-          <div className="space-y-6 max-w-3xl mx-auto">
-            <h1 className="text-4xl md:text-5xl font-bold text-[#0D0D0D]">
-              به فروشگاه آریو خوش آمدید
-            </h1>
-            <div className="h-1 w-24 bg-mustard mx-auto rounded-full" />
-            <p className="mx-auto max-w-[700px] text-muted-foreground text-lg md:text-xl">
-              تجربه خریدی متفاوت با بهترین کیفیت و قیمت. گجت‌ها و اکسسوری‌های
-              دیجیتال برتر را از ما بخواهید.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/products">
-                <Button size="lg" className="w-full sm:w-auto">
-                  مشاهده محصولات
-                </Button>
-              </Link>
-              <Link href="/about">
-                <Button variant="outline" size="lg" className="w-full sm:w-auto">
-                  درباره ما
-                </Button>
-              </Link>
-            </div>
+        <div className="space-y-6 max-w-3xl mx-auto">
+          <h1 className="text-4xl md:text-5xl font-bold text-[#0D0D0D]">
+            به فروشگاه آریو خوش آمدید
+          </h1>
+          <div className="h-1 w-24 bg-mustard mx-auto rounded-full" />
+          <p className="mx-auto max-w-[700px] text-muted-foreground text-lg md:text-xl">
+            تجربه خریدی متفاوت با بهترین کیفیت و قیمت. گجت‌ها و اکسسوری‌های
+            دیجیتال برتر را از ما بخواهید.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link href="/products" prefetch>
+              <Button size="lg" className="w-full sm:w-auto">
+                مشاهده محصولات
+              </Button>
+            </Link>
+            <Link href="/about" prefetch>
+              <Button variant="outline" size="lg" className="w-full sm:w-auto">
+                درباره ما
+              </Button>
+            </Link>
           </div>
-        </FadeInOptimized>
+        </div>
       </section>
 
       {/* Advantages Section */}
       <section className="bg-muted/50 py-20">
         <div className="container mx-auto px-4">
-          <FadeInOptimized delay={0.2}>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <Card>
                 <CardHeader>
                   <div className="flex items-center gap-3 mb-2">
@@ -107,16 +101,14 @@ export default function Home() {
                   </p>
                 </CardContent>
               </Card>
-            </div>
-          </FadeInOptimized>
+          </div>
         </div>
       </section>
 
       {/* Featured Products */}
       {featuredProducts.length > 0 && (
         <section className="container mx-auto px-4 py-20">
-          <FadeInOptimized delay={0.3}>
-            <div className="mb-8 text-center">
+          <div className="mb-8 text-center">
               <h2 className="text-3xl font-bold mb-2 text-warmbrown">محصولات ویژه</h2>
               <p className="text-muted-foreground">
                 بهترین و پرفروش‌ترین محصولات ما
@@ -129,16 +121,14 @@ export default function Home() {
                   مشاهده همه محصولات
                 </Button>
               </Link>
-            </div>
-          </FadeInOptimized>
+          </div>
         </section>
       )}
 
       {/* Categories Section */}
       <section className="bg-muted/50 py-20">
         <div className="container mx-auto px-4">
-          <FadeInOptimized delay={0.4}>
-            <div className="mb-8 text-center">
+          <div className="mb-8 text-center">
               <h2 className="text-3xl font-bold mb-2">دسته‌بندی‌ها</h2>
               <p className="text-muted-foreground">
                 محصولات را بر اساس دسته‌بندی مشاهده کنید
@@ -178,15 +168,13 @@ export default function Home() {
                   </Link>
                 );
               })}
-            </div>
-          </FadeInOptimized>
+          </div>
         </div>
       </section>
 
       {/* Testimonials Section */}
       <section className="container mx-auto px-4 py-20">
-        <FadeInOptimized delay={0.5}>
-          <div className="mb-8 text-center">
+        <div className="mb-8 text-center">
             <h2 className="text-3xl font-bold mb-2">نظرات مشتریان</h2>
             <p className="text-muted-foreground">
               تجربه خرید مشتریان راضی ما
@@ -230,7 +218,6 @@ export default function Home() {
               </Card>
             ))}
           </div>
-        </FadeInOptimized>
       </section>
     </div>
   );
