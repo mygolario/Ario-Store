@@ -8,7 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Truck, Shield, HeadphonesIcon, Speaker, Watch, Smartphone } from "lucide-react";
 
 export const dynamic = "force-static";
-export const revalidate = 3600; // Revalidate every hour
+export const revalidate = 86400; // Revalidate daily for better caching
 
 export const metadata: Metadata = {
   title: "Ario Store | فروشگاه اینترنتی گجت و اکسسوری دیجیتال",
