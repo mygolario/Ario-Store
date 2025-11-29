@@ -11,9 +11,10 @@ import { useToast } from "@/components/ui/toast";
 
 interface ProductCardProps {
   product: Product;
+  priority?: boolean;
 }
 
-export function ProductCard({ product }: ProductCardProps) {
+export function ProductCard({ product, priority = false }: ProductCardProps) {
   const addItem = useCartStore((state) => state.addItem);
   const { addToast } = useToast();
   const isInStock =
@@ -31,15 +32,17 @@ export function ProductCard({ product }: ProductCardProps) {
   };
 
   return (
-    <div className="group relative flex flex-col overflow-hidden rounded-lg border bg-card transition-shadow hover:shadow-lg">
+    <div className="group relative flex flex-col overflow-hidden rounded-xl border border-divider bg-white transition-all duration-200 hover:shadow hover:scale-[1.02]">
       {/* Image Container */}
-      <Link href={`/product/${product.slug}`} className="relative aspect-square">
+      <Link href={`/product/${product.slug}`} className="relative aspect-square overflow-hidden">
         <Image
           src={product.mainImage}
           alt={product.name}
           fill
-          className="object-cover transition-transform group-hover:scale-105"
+          className="object-cover transition-all duration-300 group-hover:scale-[1.03] group-hover:shadow-sm"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          priority={priority}
+          loading={priority ? undefined : "lazy"}
         />
         {/* Badges */}
         <div className="absolute top-2 right-2 flex flex-col gap-2">
@@ -81,7 +84,7 @@ export function ProductCard({ product }: ProductCardProps) {
               {formatPrice(product.oldPrice)}
             </span>
           )}
-          <span className="text-lg font-bold text-primary">
+          <span className="text-lg font-bold text-warmbrown">
             {formatPrice(product.price)}
           </span>
         </div>

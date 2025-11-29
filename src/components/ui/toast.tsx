@@ -31,13 +31,13 @@ const Toast: React.FC<ToastProps> = ({
   return (
     <div
       className={cn(
-        "group pointer-events-auto relative flex w-full items-center justify-between space-x-4 space-x-reverse overflow-hidden rounded-md border p-6 pr-8 shadow-lg transition-all",
+        "group pointer-events-auto relative flex w-full items-center justify-between space-x-4 space-x-reverse overflow-hidden rounded-lg border p-6 pr-8 shadow-lg transition-all",
         variant === "success" &&
-          "border-green-500 bg-green-50 text-green-900 dark:bg-green-950 dark:text-green-50",
+          "border-green-500 bg-green-50 text-green-900",
         variant === "error" &&
-          "border-red-500 bg-red-50 text-red-900 dark:bg-red-950 dark:text-red-50",
+          "border-red-500 bg-red-50 text-red-900",
         variant === "default" &&
-          "border bg-background text-foreground"
+          "border-divider bg-white text-black"
       )}
     >
       <div className="grid gap-1">
@@ -83,7 +83,7 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
   return (
     <ToastContext.Provider value={{ toasts, addToast, removeToast }}>
       {children}
-      <div className="pointer-events-none fixed bottom-0 left-0 z-[100] flex max-h-screen w-full flex-col-reverse p-4 sm:left-auto sm:right-0 sm:top-auto sm:bottom-0 sm:flex-col md:max-w-[420px]">
+      <div className="pointer-events-none fixed bottom-0 left-0 z-100 flex max-h-screen w-full flex-col-reverse p-4 sm:left-auto sm:right-0 sm:top-auto sm:bottom-0 sm:flex-col md:max-w-[420px]">
         {toasts.map((toast) => (
           <Toast
             key={toast.id}

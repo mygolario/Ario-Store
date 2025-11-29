@@ -8,7 +8,8 @@ import { Input } from "@/components/ui/input";
 import { MobileNav } from "./MobileNav";
 import { MiniCart } from "@/components/cart/MiniCart";
 import { useCartStore } from "@/store/cart";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { cn } from "@/lib/utils";
 
 const navItems = [
   { name: "صفحه اصلی", href: "/" },
@@ -23,6 +24,15 @@ export function Header() {
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState("");
   const totalItems = useCartStore((state) => state.getTotalItems());
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -33,8 +43,18 @@ export function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6 gap-4">
+    <header
+      className={cn(
+        "sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60 transition-all duration-300",
+        isScrolled ? "shadow-sm" : ""
+      )}
+    >
+      <div
+        className={cn(
+          "container mx-auto flex items-center justify-between px-4 md:px-6 gap-4 transition-all duration-300",
+          isScrolled ? "h-14" : "h-20"
+        )}
+      >
         {/* Mobile Menu & Logo */}
         <div className="flex items-center gap-4">
           <MobileNav />
@@ -66,7 +86,7 @@ export function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className="transition-colors hover:text-foreground/80 text-foreground/60"
+              className="transition-colors text-foreground/60 hover:text-mustard hover:underline hover:decoration-mustard hover:underline-offset-4"
             >
               {item.name}
             </Link>

@@ -41,10 +41,10 @@ export default function ProductsPage() {
   }, [allProducts, filters, sortBy]);
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-20">
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-2">همه محصولات</h1>
+        <h1 className="text-4xl md:text-5xl font-bold mb-2 text-black">همه محصولات</h1>
         <p className="text-muted-foreground">
           {filteredAndSortedProducts.length} محصول یافت شد
         </p>
